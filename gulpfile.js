@@ -79,7 +79,7 @@ function css() {
 // Lint scripts
 function scriptsLint() {
   return gulp
-    .src(["./assets/js/**/*", "./gulpfile.js"])
+    .src(["./assets/js/**/*", "!./assets/js/vendors/*", "./gulpfile.js"])
     .pipe(plumber())
     .pipe(eslint())
     .pipe(eslint.format())
@@ -90,11 +90,19 @@ function scriptsLint() {
 function scripts() {
   return (
     gulp
-      .src(["./assets/js/**/*"])
+      .src(["./assets/js/**/*", "!./assets/js/vendors/*"])
       .pipe(plumber())
       .pipe(webpackstream(webpackconfig, webpack))
       // folder only, filename is specified in webpack config
       .pipe(gulp.dest("./dist/assets/js/"))
+      .pipe(browsersync.stream())
+  );
+}
+function scriptsVendors() {
+  return (
+    gulp
+      .src(["./assets/js/vendors/*"])
+      .pipe(gulp.dest("./dist/assets/js/vendors"))
       .pipe(browsersync.stream())
   );
 }
@@ -124,7 +132,8 @@ function fonts() {
 function watchFiles() {
   gulp.watch("./assets/scss/**/*", gulp.series(css, browserSyncReload));
   gulp.watch("./assets/fonts/**/*.*", fonts);
-  gulp.watch("./assets/js/**/*", gulp.series(scriptsLint, scripts));
+  // gulp.watch("./assets/js/**/*", gulp.series(scriptsLint, scripts));
+  gulp.watch(["./assets/js/**/*", "!./assets/js/vendors/*"], gulp.series(scripts, browserSyncReload));
 //   gulp.watch(
 //     [
 //       "./_includes/**/*",
@@ -140,8 +149,9 @@ function watchFiles() {
 }
 
 // define complex tasks
-const js = gulp.series(scriptsLint, scripts);
-const build = gulp.series(clean, gulp.parallel(css, images, html, js, fonts));
+// const js = gulp.series(scriptsLint, scripts);
+const js = gulp.series(scripts);
+const build = gulp.series(clean, gulp.parallel(css, images, html, js, scriptsVendors, fonts));
 // const build = gulp.series(clean, gulp.parallel(css, images, jekyll, js));
 const watch = gulp.parallel(watchFiles, browserSync);
 
@@ -149,6 +159,7 @@ const watch = gulp.parallel(watchFiles, browserSync);
 exports.images = images;
 exports.css = css;
 exports.js = js;
+exports.scriptsVendors = scriptsVendors;
 exports.fonts = fonts;
 exports.html = html;
 // exports.jekyll = jekyll;

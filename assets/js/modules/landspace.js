@@ -1,13 +1,14 @@
-// import * as navigation from "./modules/navigation.js";
-// import * as fullscreen from "./modules/fullscreen.js";
-// import * as landspace from "./modules/landspace.js";
-// navigation.init();
-// fullscreen.init();
-// landspace.init();
+/* eslint-disable no-func-assign */
+/* eslint-disable no-undef */
+"use strict";
 
+/**
+ * Initialise
+ */
 
-createLandscape({
-    palleteImage:"../img/pallete5.png"
+function init() {
+  createLandscape({
+    palleteImage:"../img/pallete.png"
   });
   
   function createLandscape(params){
@@ -249,3 +250,6 @@ createLandscape({
     };
     loop(1500);
   }
+}
+
+export { init };
