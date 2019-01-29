@@ -10,6 +10,11 @@ body {
   line-height: 1;
 }
 
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
 *, :after, :before, html {
   box-sizing: border-box;
 }
@@ -18,11 +23,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 40px;
+  padding: 40px 40px 0px;
 
+  @media screen and (min-width: 992px) {
+    padding: 40px 145px 0px;
+  }
   &_msg {
-    @include rem-size(32px);
+    @include rem-size(20px);
     font-weight: 800;
+    margin-left: 40px;
+
+    @media screen and (min-width: 992px) {
+      @include rem-size(32px);
+    }
+
     a {
       color: #fff;
     }
@@ -32,28 +46,58 @@ body {
 .main {
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
-  padding-left: 145px;
+  display: flex;
+  flex-direction: column;
 }
 
 .middler {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: calc(100% - 51px);
+  // height: calc(100% - 86px);
   position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+
+  @media screen and (min-width: 992px) {
+    flex-direction: row;
+  }
 
   &_title {
     display: flex;
     flex-direction: column;
-    @include rem-size(99px);
+    align-self: flex-start;
+    @media screen and (min-width: 992px) {
+      align-self: auto;
+    }
+  }
+
+  &_title-word {
+    display: flex;
+    flex-direction: column;
+    
+    @include rem-size(59px);
     font-weight: 800;
+    padding-left: 40px;
+    @media screen and (min-width: 992px) {
+      @include rem-size(99px);
+      padding-left: 145px;
+    }
 
     span {}
   }
 
   &_preview {
-    width: (695 / 1440) * 100%;
-    
+    // width: (695 / 1440) * 100%;
+    // margin-right: -145px;
+    align-self: flex-end;
+
+    @media screen and (min-width: 992px) {
+      width: (695 / 1440) * 100%;
+      align-self: auto;
+    }
 
     img {
       max-width: 100%;
@@ -105,10 +149,27 @@ body {
     height: 60.547vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 
     img {
       vertical-align: bottom;
+      max-height: 100%;
     }
+  }
+}
+
+.button-present {
+  @include rem-size(21px);
+  font-weight: 300;
+  padding-left: 40px;
+  position: absolute;
+  bottom: 0;
+  
+  @media screen and (min-width: 992px) {
+    padding-left: 145px;
+  }
+
+  a {
+    color: #fff;
   }
 }

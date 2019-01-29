@@ -528,6 +528,11 @@ body {
   line-height: 1;
 }
 
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
 *, :after, :before, html {
   box-sizing: border-box;
 }
@@ -536,13 +541,27 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 40px;
+  padding: 40px 40px 0px;
+}
+
+@media screen and (min-width: 992px) {
+  .header {
+    padding: 40px 145px 0px;
+  }
 }
 
 .header_msg {
-  font-size: 32px;
-  font-size: 2rem;
+  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 800;
+  margin-left: 40px;
+}
+
+@media screen and (min-width: 992px) {
+  .header_msg {
+    font-size: 32px;
+    font-size: 2rem;
+  }
 }
 
 .header_msg a {
@@ -553,27 +572,65 @@ body {
   height: 100vh;
   /* Fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
-  padding-left: 145px;
+  display: flex;
+  flex-direction: column;
 }
 
 .middler {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: calc(100% - 51px);
   position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+}
+
+@media screen and (min-width: 992px) {
+  .middler {
+    flex-direction: row;
+  }
 }
 
 .middler_title {
   display: flex;
   flex-direction: column;
-  font-size: 99px;
-  font-size: 6.1875rem;
+  align-self: flex-start;
+}
+
+@media screen and (min-width: 992px) {
+  .middler_title {
+    align-self: auto;
+  }
+}
+
+.middler_title-word {
+  display: flex;
+  flex-direction: column;
+  font-size: 59px;
+  font-size: 3.6875rem;
   font-weight: 800;
+  padding-left: 40px;
+}
+
+@media screen and (min-width: 992px) {
+  .middler_title-word {
+    font-size: 99px;
+    font-size: 6.1875rem;
+    padding-left: 145px;
+  }
 }
 
 .middler_preview {
-  width: 48.26389%;
+  align-self: flex-end;
+}
+
+@media screen and (min-width: 992px) {
+  .middler_preview {
+    width: 48.26389%;
+    align-self: auto;
+  }
 }
 
 .middler_preview img {
@@ -622,11 +679,31 @@ body {
   height: 60.547vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .project_img img {
   vertical-align: bottom;
+  max-height: 100%;
+}
+
+.button-present {
+  font-size: 21px;
+  font-size: 1.3125rem;
+  font-weight: 300;
+  padding-left: 40px;
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .button-present {
+    padding-left: 145px;
+  }
+}
+
+.button-present a {
+  color: #fff;
 }
 
 @font-face {
