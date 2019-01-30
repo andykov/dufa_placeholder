@@ -7,7 +7,7 @@
 
 
 createLandscape({
-    palleteImage:"../img/pallete.png"
+    palleteImage:"../img/pallete_bw.png"
   });
   
   function createLandscape(params){
