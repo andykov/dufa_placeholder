@@ -44,7 +44,7 @@ createLandscape({
       scene = new THREE.Scene();
       var fogColor = new THREE.Color( 0x333333 );
       scene.background = fogColor;
-      scene.fog = new THREE.Fog(fogColor, 100, 400);
+      scene.fog = new THREE.Fog(fogColor, 0, 400);
   
       
       sky();

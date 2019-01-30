@@ -313,10 +313,6 @@ a:focus {
   font-size: 24px;
 }
 
-.content__subtitle a {
-  color: var(--color-subtitle);
-}
-
 .landscape {
   position: absolute;
   top: 0;
