@@ -44,7 +44,7 @@ createLandscape({
       scene = new THREE.Scene();
       var fogColor = new THREE.Color( 0x333333 );
       scene.background = fogColor;
-      scene.fog = new THREE.Fog(fogColor, 0, 400);
+      scene.fog = new THREE.Fog(fogColor, 100, 400);
   
       
       sky();
@@ -229,7 +229,7 @@ createLandscape({
       TweenMax.set(el, {
         x: getRandomNumber(-20,20), 
         y: getRandomNumber(-20,20),
-        color: ["#f4d339","#df003f","#111111"][cycles-1]
+        color: ["#333","#333","#111111"][cycles-1]
       });
       setTimeout(() => {
         TweenMax.set(el, {x: 0, y: 0, color: "#fff"});
