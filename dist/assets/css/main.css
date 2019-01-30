@@ -194,8 +194,8 @@ table {
 body {
   --color-text: #fff;
   --color-bg: #0e0e0f;
-  --color-link: #EC8F7B;
-  --color-link-hover: #fff;
+  --color-link: #fff;
+  --color-link-hover: #E5CA56;
   --color-title: #fff;
   --color-subtitle: #fff;
   color: var(--color-text);
@@ -203,24 +203,6 @@ body {
   font-family: Barlow, Arial, sans-serif;
   overflow: hidden;
   height: 100vh;
-}
-
-.demo-2 {
-  --color-text: #fff;
-  --color-bg: #0e0e0f;
-  --color-link: #854aa5;
-  --color-link-hover: #fff;
-  --color-title: #fff;
-  --color-subtitle: #fff;
-}
-
-.demo-3 {
-  --color-text: #fff;
-  --color-bg: #0e0e0f;
-  --color-link: #E5CA56;
-  --color-link-hover: #fff;
-  --color-title: #fff;
-  --color-subtitle: #fff;
 }
 
 /* Page Loader */
@@ -284,13 +266,11 @@ a:focus {
   line-height: 1;
 }
 
-.frame__article {
-  line-height: 1;
-}
-
-.frame__github,
-.frame__demos a:not(:last-child) {
+.frame__start {
   margin-right: 1rem;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.125rem;
 }
 
 .content {
@@ -306,10 +286,19 @@ a:focus {
 .content__title {
   position: relative;
   color: var(--color-title);
-  font-size: 6vw;
+  font-size: 12vw;
+  padding: 0 20px;
+  text-align: center;
   text-transform: uppercase;
   margin: 0;
   perspective: 1000px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 48em) {
+  .content__title {
+    font-size: 6vw;
+  }
 }
 
 .content__title span {
@@ -345,60 +334,46 @@ a:focus {
   background: #000;
 }
 
-@media screen and (min-width: 53em) {
-  .frame {
-    position: fixed;
-    text-align: left;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-    display: grid;
-    align-content: space-between;
-    width: 100%;
-    max-width: none;
-    height: 100vh;
-    padding: 2rem;
-    pointer-events: none;
-    grid-template-columns: 25% 50% 25%;
-    grid-template-rows: auto auto auto;
-    grid-template-areas: 'previous title github' '... ... ...' '... demos ...';
-  }
-  .frame__title-wrap {
-    grid-area: title;
-    justify-self: center;
-    display: flex;
-  }
-  .frame__title {
-    margin: 0 0.5rem 0 0;
-    padding: 0 0.5rem 0 0;
-    position: relative;
-  }
-  .frame__title::after {
-    content: '';
-    width: 1px;
-    height: 1.1rem;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    margin-top: -0.55rem;
-    background: currentColor;
-  }
-  .frame__github {
-    grid-area: github;
-    justify-self: end;
-    margin: 0;
-  }
-  .frame__previous {
-    grid-area: previous;
-    padding: 0;
-    justify-self: start;
-  }
-  .frame a {
-    pointer-events: auto;
-  }
-  .content {
-    height: 100vh;
-    padding: 0 0 10rem 0;
-    justify-content: flex-end;
-  }
+.frame {
+  position: fixed;
+  text-align: left;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  display: grid;
+  align-content: space-between;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  padding: 2rem;
+  pointer-events: none;
+  grid-template-columns: 30% 12% 58%;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 'previous title github' '... ... ...' '... demos ...';
+}
+
+.frame__start {
+  grid-area: github;
+  justify-self: end;
+  margin: 0;
+}
+
+.frame__logo {
+  grid-area: previous;
+  padding: 0;
+  justify-self: start;
+}
+
+.frame__logo img {
+  max-width: 100%;
+}
+
+.frame a {
+  pointer-events: auto;
+}
+
+.content {
+  height: 100vh;
+  padding: 0 0 6rem 0;
+  justify-content: flex-end;
 }
